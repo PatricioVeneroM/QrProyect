@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CMS del Sur — Mayor cobertura en consumo masivo</title>
+  <meta name="description" content="Distribuimos confianza y crecimiento en Arequipa y el sur del Perú. Cobertura real para bodegas, minimarkets y HORECA.">
+  <meta name="theme-color" content="#4400ff">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="CMS del Sur — Mayor cobertura en consumo masivo">
+  <meta property="og:description" content="Llegamos a donde otros no llegan. Descubre nuestra cobertura y marcas.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tudominio.com/landing-cms">
+  <meta property="og:image" content="https://placehold.co/1200x630/4400ff/ffffff?text=CMS+del+Sur">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD Organization -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"CMS del Sur",
+    "url":"https://cmsdelsur.com",
+    "logo":"https://cmsdelsur.com/wp-content/uploads/2023/07/HORIZONTAL-BLUE@2x.png",
+    "sameAs":["https://www.facebook.com/cmsdelsur?locale=es_LA","https://www.instagram.com/cmsdelsur"],
+    "address":{"@type":"PostalAddress","streetAddress":"27 de Noviembre 611, Cerro Colorado","addressLocality":"Arequipa","addressCountry":"PE"},
+    "contactPoint":[{"@type":"ContactPoint","contactType":"customer service","telephone":"+51-987-654-321"}]
+  }
+  </script>
+
+  <style>
+    :root{
+      /* Paleta corporativa */
+      --purple:#4400ff; --purple-dark:#3200c0;
+      --sky:#00ccff; --yellow:#ffdd44; --red:#ee4455; --green:#99cc44;
+      --ink:#0b1220; --muted:#6b7280; --surface:#ffffff; --canvas:#f6f7fb;
+
+      /* Pasteles para fondos de sección (tints ~10–14%) */
+      --yellow-pt:#fff7cf; /* #FFDD44 @12% aprox */
+      --sky-pt:#e6fbff;    /* #00CCFF @10% */
+      --purple-pt:#f0ebff; /* #4400FF @10% */
+      --green-pt:#f1fde6;  /* #99CC44 @12% */
+      --red-pt:#ffe9ed;    /* #EE4455 @10% */
+    }
+    body{ font-family:'Poppins',sans-serif; }
+
+    .bg-noise::before{
+      content:""; position:absolute; inset:0; pointer-events:none; opacity:.05;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .card{ background:var(--surface); border:1px solid #eef0f4; border-radius:16px; box-shadow:0 10px 28px -12px rgba(12,18,32,.14); }
+    .brand-gradient{ background-image:linear-gradient(90deg,var(--purple),var(--purple-dark)); }
+    .brand-tint{ background:color-mix(in srgb, var(--purple) 12%, white); color:var(--purple); }
+    .sky-tint{ background:color-mix(in srgb, var(--sky) 12%, white); color:#066276; }
+
+    .fade-in-section{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+    .fade-in-section.is-visible{ opacity:1; transform:none; }
+    @media (prefers-reduced-motion: reduce){
+      .fade-in-section{ transition:none; transform:none; }
+      .animate-none{ animation:none!important; }
+    }
+    .focus-ring:focus-visible{ outline:3px solid var(--sky); outline-offset:3px; border-radius:9999px; }
+  </style>
+</head>
+
+<body class="bg-[var(--canvas)] text-[var(--ink)] selection:bg-[var(--purple)]/15 selection:text-[var(--purple)]">
+
+  <!-- NAV -->
+  <nav class="bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-white/40 fixed top-0 inset-x-0 z-50">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3" aria-label="Inicio CMS del Sur">
+        <img src="https://cmsdelsur.com/wp-content/uploads/2023/07/HORIZONTAL-BLUE@2x.png" alt="CMS del Sur" class="h-10 w-auto" loading="eager" decoding="async">
+      </a>
+      <button id="mobileBtn" class="md:hidden p-2 focus-ring" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <ul class="hidden md:flex items-center gap-6">
+        <li><a href="#quienes-somos" class="hover:text-[var(--purple)] transition">Quiénes somos</a></li>
+        <li><a href="#marcas" class="hover:text-[var(--purple)] transition">Marcas</a></li>
+        <li><a href="#cobertura" class="hover:text-[var(--purple)] transition">Cobertura</a></li>
+        <li>
+          <a href="#contacto" class="inline-flex items-center bg-[var(--purple)] text-white px-4 py-2 rounded-full hover:bg-[var(--purple-dark)] shadow-lg focus-ring">
+            Contáctanos
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden border-t bg-white" role="menu">
+      <a href="#quienes-somos" class="block px-5 py-3 hover:bg-gray-50" role="menuitem">Quiénes somos</a>
+      <a href="#marcas" class="block px-5 py-3 hover:bg-gray-50" role="menuitem">Marcas</a>
+      <a href="#cobertura" class="block px-5 py-3 hover:bg-gray-50" role="menuitem">Cobertura</a>
+      <a href="#contacto" class="block px-5 py-3 font-semibold text-[var(--purple)] hover:bg-gray-50" role="menuitem">Contáctanos</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" class="relative h-[92vh] min-h-[560px] overflow-hidden">
+    <div class="absolute inset-0">
+      <video class="w-full h-full object-cover" autoplay muted loop playsinline poster="https://placehold.co/1920x1080/111/fff?text=CMS+en+Ruta">
+        <source src="../update/INTROVIDEO.mp4" type="video/mp4"/>
+      </video>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+    <div class="absolute inset-0 bg-noise"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-6 pt-32 text-center text-white">
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+        Tu bodega, nuestra cobertura.
+      </h1>
+      <p class="text-lg md:text-2xl mb-8 text-white/90">
+        Bienvenido a CMS del Sur: distribuimos confianza y crecimiento en todo el sur del Perú.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contacto" class="brand-gradient text-white font-semibold py-3 px-8 rounded-full shadow-xl focus-ring">Hablemos</a> 
+        <a href="#quienes-somos" class="border-2 border-white/85 hover:bg-white hover:text-[var(--purple)] text-white font-semibold py-3 px-8 rounded-full focus-ring">Conócenos</a>
+      </div>
+    </div>
+
+    <!-- Micro-franjas multicolor (brand vibes) -->
+    <div class="absolute bottom-0 inset-x-0 grid grid-cols-5 h-2">
+      <div class="bg-[var(--yellow)]"></div>
+      <div class="bg-[var(--sky)]"></div>
+      <div class="bg-[var(--purple)]"></div>
+      <div class="bg-[var(--red)]"></div>
+      <div class="bg-[var(--green)]"></div>
+    </div>
+  </header>
+
+  <!-- STATS BAR -->
+  <section class="py-10 bg-white">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="card py-5 text-center border-t-4 border-[var(--purple)]">
+        <div class="text-3xl md:text-4xl font-extrabold">8,000+</div>
+        <div class="text-sm text-[var(--muted)]">Clientes activos</div>
+      </div>
+      <div class="card py-5 text-center border-t-4 border-[var(--sky)]">
+        <div class="text-3xl md:text-4xl font-extrabold">33</div>
+        <div class="text-sm text-[var(--muted)]">Vendedores</div>
+      </div>
+      <div class="card py-5 text-center border-t-4 border-[var(--green)]">
+        <div class="text-3xl md:text-4xl font-extrabold">24–48 h</div>
+        <div class="text-sm text-[var(--muted)]">Tiempo de entrega</div>
+      </div>
+      <div class="card py-5 text-center border-t-4 border-[var(--red)]">
+        <div class="text-3xl md:text-4xl font-extrabold">+5</div>
+        <div class="text-sm text-[var(--muted)]">Marcas líderes</div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- QUIÉNES SOMOS -->
+    <section id="quienes-somos" class="py-20 fade-in-section" style="background:var(--yellow-pt);">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-5 text-[var(--purple)]">¿Quiénes somos?</h2>
+        <p class="max-w-3xl mx-auto text-[var(--ink)]/75 text-lg">
+          Somos distribuidores líderes en el sur del Perú. Atendemos a más de 8,000 clientes con logística
+          optimizada, calidad y puntualidad. Nuestro compromiso: que tus productos nunca falten donde se venden.
+        </p>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="card p-6 border-t-4 border-[var(--purple)]">
+            <div class="w-14 h-14 grid place-content-center rounded-full brand-tint mx-auto mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 21h10M12 3v18"/></svg>
+            </div>
+            <h3 class="font-semibold text-xl mb-2">Distribución ágil</h3>
+            <p class="text-[var(--muted)]">Rutas inteligentes y entregas on-time.</p>
+          </div>
+
+          <div class="card p-6 border-t-4 border-[var(--sky)]">
+            <div class="w-14 h-14 grid place-content-center rounded-full sky-tint mx-auto mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-4.418 0-8 1.79-8 4v4h16v-4c0-2.21-3.582-4-8-4z"/><circle cx="12" cy="5" r="3"/></svg>
+            </div>
+            <h3 class="font-semibold text-xl mb-2">Amplia cobertura</h3>
+            <p class="text-[var(--muted)]">Llegamos a bodegas, minimarkets y HORECA.</p>
+          </div>
+
+          <div class="card p-6 border-t-4 border-[var(--green)]">
+            <div class="w-14 h-14 grid place-content-center rounded-full mx-auto mb-4" style="background:color-mix(in srgb, var(--green) 12%, white); color:#2f5e10;">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM6 21v-2a4 4 0 014-4h0a4 4 0 014 4v2"/></svg>
+            </div>
+            <h3 class="font-semibold text-xl mb-2">Socios estratégicos</h3>
+            <p class="text-[var(--muted)]">Relaciones de largo plazo con marcas líderes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARCAS -->
+    <section id="marcas" class="py-20 fade-in-section" style="background:var(--purple-pt);">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-3 text-[var(--red)]">Marcas que distribuimos</h2>
+        <p class="max-w-2xl mx-auto text-[var(--ink)]/75 mb-10">Aliados de las marcas que mueven el mercado.</p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 items-center">
+          <!-- Cada card con barra de color + overlay suave -->
+          <figure class="group relative card overflow-hidden">
+            <div class="h-1 w-full bg-[var(--yellow)]"></div>
+            <img loading="lazy" src="/update/photos/1.png" width="130" alt="Alicorp" class="mx-auto p-6 transition group-hover:opacity-10">
+            <div class="absolute inset-0 bg-[var(--yellow)]/5 opacity-0 group-hover:opacity-100 transition"></div>
+            <figcaption class="absolute inset-0 flex items-center justify-center p-3 bg-black/70 text-white opacity-0 group-hover:opacity-100 transition rounded-lg text-sm">Productos líderes de consumo masivo.</figcaption>
+          </figure>
+
+          <figure class="group relative card overflow-hidden">
+            <div class="h-1 w-full bg-[var(--sky)]"></div>
+            <img loading="lazy" src="/update/photos/2.png" alt="CBC" class="mx-auto p-6 transition group-hover:opacity-10">
+            <div class="absolute inset-0 bg-[var(--sky)]/5 opacity-0 group-hover:opacity-100 transition"></div>
+            <figcaption class="absolute inset-0 flex items-center justify-center p-3 bg-black/70 text-white opacity-0 group-hover:opacity-100 transition rounded-lg text-sm">Portafolio de bebidas icónicas.</figcaption>
+          </figure>
+
+          <figure class="group relative card overflow-hidden">
+            <div class="h-1 w-full bg-[var(--purple)]"></div>
+            <img loading="lazy" src="update/photos/3.png" alt="Rintisa" width="150" class="mx-auto p-6 transition group-hover:opacity-10">
+            <div class="absolute inset-0 bg-[var(--purple)]/5 opacity-0 group-hover:opacity-100 transition"></div>
+            <figcaption class="absolute inset-0 flex items-center justify-center p-3 bg-black/70 text-white opacity-0 group-hover:opacity-100 transition rounded-lg text-sm">Alimentos y cuidado de mascotas.</figcaption>
+          </figure>
+
+          <figure class="group relative card overflow-hidden">
+            <div class="h-1 w-full bg-[var(--yellow)]"></div>
+            <img loading="lazy" src="update/photos/4.png" alt="Rintisa 2" width="150" class="mx-auto p-6 transition group-hover:opacity-10">
+            <div class="absolute inset-0 bg-[var(--yellow)]/5 opacity-0 group-hover:opacity-100 transition"></div>
+            <figcaption class="absolute inset-0 flex items-center justify-center p-3 bg-black/70 text-white opacity-0 group-hover:opacity-100 transition rounded-lg text-sm">Alimentos y cuidado de mascotas.</figcaption>
+          </figure>
+
+          <figure class="group relative card overflow-hidden">
+            <div class="h-1 w-full bg-[var(--green)]"></div>
+            <img loading="lazy" src="/update/photos/6.png" alt="Campomar" class="mx-auto p-6 transition group-hover:opacity-10">
+            <div class="absolute inset-0 bg-[var(--green)]/5 opacity-0 group-hover:opacity-100 transition"></div>
+            <figcaption class="absolute inset-0 flex items-center justify-center p-3 bg-black/70 text-white opacity-0 group-hover:opacity-100 transition rounded-lg text-sm">Conservas de calidad.</figcaption>
+          </figure>
+
+          <figure class="group relative card overflow-hidden col-span-2 sm:col-span-1 md:col-span-1">
+            <div class="h-1 w-full bg-[var(--red)]"></div>
+            <img loading="lazy" src="update/photos/5.png" width="130" alt="Paracas" class="mx-auto p-6 transition group-hover:opacity-10">
+            <div class="absolute inset-0 bg-[var(--red)]/5 opacity-0 group-hover:opacity-100 transition"></div>
+            <figcaption class="absolute inset-0 flex items-center justify-center p-3 bg-black/70 text-white opacity-0 group-hover:opacity-100 transition rounded-lg text-sm">Sal de mesa y derivados.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- COBERTURA -->
+    <section id="cobertura" class="py-20 fade-in-section" style="background:var(--sky-pt);">
+      <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-extrabold mb-3 text-[var(--green)]">Cobertura garantizada</h2>
+          <p class="text-lg mb-4 text-[var(--ink)]/80">Llegamos a donde otros no llegan.</p>
+          <p class="text-[var(--muted)]">Equipos en campo, rutas optimizadas y foco en disponibilidad para asegurar tu punto de venta abastecido en Arequipa y zonas estratégicas del sur.</p>
+        </div>
+        <div class="relative rounded-xl overflow-hidden shadow-2xl">
+          <img loading="lazy" src="https://cmsdelsur.com/wp-content/uploads/2023/08/FOTOS-SEDE-AQP1.png" alt="Mapa de cobertura CMS del Sur" class="w-full h-auto">
+          <!-- Overlay celeste sutil -->
+          <div class="absolute inset-0 bg-[var(--sky)]/10"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CULTURA / CARRUSEL -->
+    <section id="cultura" aria-labelledby="cultura-title" class="py-20 fade-in-section" style="background:var(--green-pt);">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 id="cultura-title" class="text-3xl md:text-4xl font-extrabold mb-4 text-[var(--purple)]">Somos más que un distribuidor</h2>
+        <p class="max-w-3xl mx-auto text-[var(--ink)]/75 mb-10">Con orgullo, acompañamos el crecimiento de miles de negocios locales.</p>
+
+        <div id="carousel" class="relative max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl group" aria-roledescription="carrusel" tabindex="0">
+          <div id="carousel-inner" class="flex transition-transform duration-500 ease-in-out" style="touch-action: pan-y;">
+            <div class="w-full flex-shrink-0 relative">
+              <img src="https://placehold.co/1200x600/d1d5db/374151?text=Vendedores+en+Acci%C3%B3n" alt="Equipo de ventas CMS atendiendo a clientes" class="w-full h-auto">
+              <div class="absolute inset-0 bg-[var(--purple)]/10"></div>
+            </div>
+            <div class="w-full flex-shrink-0 relative">
+              <img src="https://placehold.co/1200x600/fecaca/991b1b?text=Camiones+en+Ruta" alt="Flota de camiones CMS del Sur" class="w-full h-auto">
+              <div class="absolute inset-0 bg-[var(--red)]/10"></div>
+            </div>
+            <div class="w-full flex-shrink-0 relative">
+              <img src="https://placehold.co/1200x600/a7f3d0/065f46?text=Bodegas+Abastecidas" alt="Bodegas abastecidas por CMS" class="w-full h-auto">
+              <div class="absolute inset-0 bg-[var(--green)]/10"></div>
+            </div>
+          </div>
+
+          <button id="prev-btn" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-900 p-2 rounded-full focus-ring" aria-label="Anterior">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button id="next-btn" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-900 p-2 rounded-full focus-ring" aria-label="Siguiente">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contacto" class="text-white">
+      <div class="brand-gradient">
+        <div class="max-w-7xl mx-auto px-6 py-16 text-center">
+          <h2 class="text-3xl md:text-4xl font-extrabold mb-6">¿Quieres conocer más de CMS del Sur?</h2>
+          <div class="mb-6 flex flex-wrap gap-2 justify-center text-[13px]">
+            <span class="px-3 py-1 rounded-full bg-white/15">+8k clientes</span>
+            <span class="px-3 py-1 rounded-full bg-white/15">Tiempo de entrega 24–48h</span>
+            <span class="px-3 py-1 rounded-full bg-white/15">Cobertura sur</span>
+          </div>
+          <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <a href="https://wa.me/51934301848?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20CMS%20del%20Sur.&utm_source=qr&utm_medium=sticker&utm_campaign=cobertura"
+               target="_blank"
+               class="bg-white text-[var(--purple)] font-bold py-3 px-8 rounded-full text-lg hover:bg-gray-100 transition transform hover:scale-105 shadow-xl inline-flex items-center gap-2 focus-ring" rel="noopener">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163C.703 16.033.156 13.988.157 11.89.16 5.334 5.495 0 12.05 0c3.18.001 6.167 1.24 8.412 3.488C22.708 5.736 23.944 8.725 23.943 11.903 23.94 18.46 18.605 23.794 12.05 23.794c-1.99 0-3.95-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.269.655 4.357 1.846 6.167l-1.117 4.096 4.195-1.1z"/></svg>
+              WhatsApp
+            </a>
+            <a href="https://cmsdelsur.com/nosotros/nosotros-sede-arequipa/" target="_blank" class="border-2 border-white text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-white hover:text-[var(--purple)] transition transform hover:scale-105 focus-ring">
+              Conoce nuestra página
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="h-2 bg-[var(--sky)]"></div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="text-white">
+    <!-- franja superior multicolor para cierre de marca -->
+    <div class="grid grid-cols-5 h-1">
+      <div class="bg-[var(--yellow)]"></div>
+      <div class="bg-[var(--sky)]"></div>
+      <div class="bg-[var(--purple)]"></div>
+      <div class="bg-[var(--red)]"></div>
+      <div class="bg-[var(--green)]"></div>
+    </div>
+
+    <div class="bg-[var(--green)]">
+      <div class="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-8 text-center md:text-left">
+        <div>
+          <img src="https://cmsdelsur.com/wp-content/uploads/2023/07/HORIZONTAL-BLUE@2x.png" alt="CMS del Sur" class="h-12 w-auto mx-auto md:mx-0 mb-4">
+          <p class="text-white/85">Mayor cobertura, mayor confianza.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-3">Contacto</h3>
+          <ul class="text-white/90 space-y-2">
+            <li>27 de Noviembre 611 — Cerro Colorado, Arequipa</li>
+            <li><a class="hover:text-white underline underline-offset-4" href="https://wa.me/51934301848">WhatsApp: +51 934 301 848</a></li>
+            <li><a class="hover:text-white underline underline-offset-4" href="mailto:atencionalcliente@cmsdelsur.com">atencionalcliente@cmsdelsur.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-3">Síguenos</h3>
+          <div class="flex justify-center md:justify-start gap-4 text-white/90">
+            <a href="https://www.facebook.com/cmsdelsur" target="_blank" aria-label="Facebook" class="hover:text-white transition"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12A10 10 0 1 0 10 21.95v-6.99H7.46V12H10V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12Z"/></svg></a>
+            <a href="https://www.instagram.com/cmsdelsur" target="_blank" aria-label="Instagram" class="hover:text-white transition"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5m5 5a5 5 0 1 0 5 5 5 5 0 0 0-5-5m6.5-.25a1.25 1.25 0 1 0 1.25 1.25 1.25 1.25 0 0 0-1.25-1.25M12 9.5A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5Z"/></svg></a>
+            <a href="https://www.tiktok.com/@cmsdelsur" target="_blank" aria-label="TikTok" class="hover:text-white transition"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12.11 3h3.09a6.5 6.5 0 0 0 6.5 6.5v3.09a9.6 9.6 0 0 1-6.5-2.38v6.89A6.9 6.9 0 1 1 8 10.51v3.07a3.83 3.83 0 1 0 2.11 3.39z"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/30 text-center text-white/80 py-5">
+        © 2025 CMS del Sur. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script defer>
+    // Menú móvil
+    const mobileBtn = document.getElementById('mobileBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn?.addEventListener('click', () => {
+      const expanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+      mobileBtn.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('is-visible'); });
+    },{ threshold: .15 });
+    document.querySelectorAll('.fade-in-section').forEach(el=>observer.observe(el));
+
+    // Carrusel accesible
+    const carouselInner = document.getElementById('carousel-inner');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    let current = 0;
+    const slides = carouselInner ? carouselInner.children : [];
+    const total = slides.length;
+    let timer;
+
+    function goTo(i){
+      if(!carouselInner) return;
+      current = (i + total) % total;
+      carouselInner.style.transform = `translateX(-${current*100}%)`;
+    }
+    function play(){ timer = setInterval(()=>goTo(current+1), 5000); }
+    function pause(){ clearInterval(timer); }
+
+    nextBtn?.addEventListener('click', ()=>{ pause(); goTo(current+1); play(); });
+    prevBtn?.addEventListener('click', ()=>{ pause(); goTo(current-1); play(); });
+
+    const carousel = document.getElementById('carousel');
+    carousel?.addEventListener('mouseenter', pause);
+    carousel?.addEventListener('mouseleave', play);
+
+    // Teclado
+    carousel?.addEventListener('keydown', (e)=>{
+      if(e.key === 'ArrowRight') { pause(); goTo(current+1); play(); }
+      if(e.key === 'ArrowLeft')  { pause(); goTo(current-1); play(); }
+    });
+
+    // Swipe básico (mobile)
+    let startX = null;
+    carousel?.addEventListener('touchstart', (e)=> startX = e.touches[0].clientX, {passive:true});
+    carousel?.addEventListener('touchend', (e)=>{
+      if(startX===null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      if(Math.abs(dx) > 40){ pause(); goTo(current + (dx<0?1:-1)); play(); }
+      startX = null;
+    });
+
+    if (total > 0){ goTo(0); play(); }
+  </script>
+</body>
+</html>
