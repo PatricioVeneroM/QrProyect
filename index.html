@@ -43,15 +43,15 @@
       --sky:#00ccff; --yellow:#ffdd44; --red:#ee4455; --green:#99cc44;
       --ink:#0b1220; --muted:#6b7280; --surface:#ffffff; --canvas:#f6f7fb;
 
-      /* Pasteles para fondos de sección (tints ~10–14%) */
-      --yellow-pt:#fff7cf; /* #FFDD44 @12% aprox */
-      --sky-pt:#e6fbff;    /* #00CCFF @10% */
-      --purple-pt:#f0ebff; /* #4400FF @10% */
-      --green-pt:#f1fde6;  /* #99CC44 @12% */
-      --red-pt:#ffe9ed;    /* #EE4455 @10% */
+      /* Pasteles para fondos de sección */
+      --yellow-pt:#fff7cf; --sky-pt:#e6fbff; --purple-pt:#f0ebff; --green-pt:#f1fde6; --red-pt:#ffe9ed;
+
+      /* Safe-area iOS */
+      --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom);
     }
     body{ font-family:'Poppins',sans-serif; }
 
+    /* Textura sutil */
     .bg-noise::before{
       content:""; position:absolute; inset:0; pointer-events:none; opacity:.05;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -62,12 +62,16 @@
     .brand-tint{ background:color-mix(in srgb, var(--purple) 12%, white); color:var(--purple); }
     .sky-tint{ background:color-mix(in srgb, var(--sky) 12%, white); color:#066276; }
 
+    /* Tipografía fluida */
+    .h1-fluid { font-size: clamp(28px, 6.2vw, 56px); line-height:1.1 }
+    .h2-fluid { font-size: clamp(22px, 4.8vw, 36px); line-height:1.15 }
+
+    /* Motion safe */
     .fade-in-section{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
     .fade-in-section.is-visible{ opacity:1; transform:none; }
-    @media (prefers-reduced-motion: reduce){
-      .fade-in-section{ transition:none; transform:none; }
-      .animate-none{ animation:none!important; }
-    }
+    @media (prefers-reduced-motion: reduce){ .fade-in-section{ transition:none; transform:none; } .animate-none{ animation:none!important; } }
+
+    /* Focus accesible */
     .focus-ring:focus-visible{ outline:3px solid var(--sky); outline-offset:3px; border-radius:9999px; }
   </style>
 </head>
@@ -102,30 +106,30 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header id="top" class="relative h-[92vh] min-h-[560px] overflow-hidden">
+  <!-- HERO (mobile-first) -->
+  <header id="top" class="relative h-[78vh] md:h-[92vh] min-h-[520px] overflow-hidden" style="padding-top:var(--safe-top);padding-bottom:var(--safe-bottom);">
     <div class="absolute inset-0">
       <video class="w-full h-full object-cover" autoplay muted loop playsinline poster="https://placehold.co/1920x1080/111/fff?text=CMS+en+Ruta">
-        <source src="../update/INTROVIDEO.mp4" type="video/mp4"/>
+        <source src="update/INTROVIDEO.mp4" type="video/mp4"/>
       </video>
     </div>
     <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
     <div class="absolute inset-0 bg-noise"></div>
 
-    <div class="relative z-10 max-w-5xl mx-auto px-6 pt-32 text-center text-white">
-      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+    <div class="relative z-10 max-w-5xl mx-auto px-6 pt-28 md:pt-32 text-center text-white">
+      <h1 class="h1-fluid font-extrabold leading-tight mb-3">
         Tu bodega, nuestra cobertura.
       </h1>
-      <p class="text-lg md:text-2xl mb-8 text-white/90">
+      <p class="text-base md:text-2xl mb-6 md:mb-8 text-white/90">
         Bienvenido a CMS del Sur: distribuimos confianza y crecimiento en todo el sur del Perú.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#contacto" class="brand-gradient text-white font-semibold py-3 px-8 rounded-full shadow-xl focus-ring">Hablemos</a> 
+      <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
+        <a href="#contacto" class="brand-gradient text-white font-semibold py-3 px-8 rounded-full shadow-xl focus-ring">Hablemos</a>
         <a href="#quienes-somos" class="border-2 border-white/85 hover:bg-white hover:text-[var(--purple)] text-white font-semibold py-3 px-8 rounded-full focus-ring">Conócenos</a>
       </div>
     </div>
 
-    <!-- Micro-franjas multicolor (brand vibes) -->
+    <!-- Micro-franjas multicolor -->
     <div class="absolute bottom-0 inset-x-0 grid grid-cols-5 h-2">
       <div class="bg-[var(--yellow)]"></div>
       <div class="bg-[var(--sky)]"></div>
@@ -160,15 +164,15 @@
   <main>
 
     <!-- QUIÉNES SOMOS -->
-    <section id="quienes-somos" class="py-20 fade-in-section" style="background:var(--yellow-pt);">
+    <section id="quienes-somos" class="py-16 md:py-20 fade-in-section" style="background:var(--yellow-pt);">
       <div class="max-w-6xl mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-4xl font-extrabold mb-5 text-[var(--purple)]">¿Quiénes somos?</h2>
-        <p class="max-w-3xl mx-auto text-[var(--ink)]/75 text-lg">
+        <h2 class="h2-fluid font-extrabold mb-4 text-[var(--purple)]">¿Quiénes somos?</h2>
+        <p class="max-w-3xl mx-auto text-[var(--ink)]/75 text-base md:text-lg">
           Somos distribuidores líderes en el sur del Perú. Atendemos a más de 8,000 clientes con logística
           optimizada, calidad y puntualidad. Nuestro compromiso: que tus productos nunca falten donde se venden.
         </p>
 
-        <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="card p-6 border-t-4 border-[var(--purple)]">
             <div class="w-14 h-14 grid place-content-center rounded-full brand-tint mx-auto mb-4">
               <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 21h10M12 3v18"/></svg>
@@ -196,80 +200,95 @@
       </div>
     </section>
 
-    <!-- MARCAS -->
-    <section id="marcas" class="py-20 fade-in-section" style="background:var(--purple-pt);">
+    <!-- MARCAS (grid uniforme y responsive) -->
+    <section id="marcas" class="py-16 md:py-20 fade-in-section" style="background:var(--purple-pt);">
       <div class="max-w-6xl mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-4xl font-extrabold mb-3 text-[var(--red)]">Marcas que distribuimos</h2>
-        <p class="max-w-2xl mx-auto text-[var(--ink)]/75 mb-10">Aliados de las marcas que mueven el mercado.</p>
+        <h2 class="h2-fluid font-extrabold mb-3 text-[var(--red)]">Marcas que distribuimos</h2>
+        <p class="max-w-2xl mx-auto text-[var(--ink)]/75 mb-8 md:mb-10">Aliados de las marcas que mueven el mercado.</p>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 items-center">
-          <!-- Cada card con barra de color + overlay suave -->
-          <figure class="group relative card overflow-hidden">
+        <!-- 2 cols (móvil) / 3 cols (sm) / 6 cols (lg) -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 items-stretch">
+
+          <!-- Card base: altura fija + contenedor centrado; logos con object-contain -->
+          <figure class="group relative card overflow-hidden h-44 md:h-48">
             <div class="h-1 w-full bg-[var(--yellow)]"></div>
-            <img loading="lazy" src="/update/photos/1.png" width="130" alt="Alicorp" class="mx-auto p-6 transition group-hover:opacity-10">
+            <div class="h-full w-full flex items-center justify-center p-6">
+              <img loading="lazy" src="update/photos/1.png" alt="Alicorp" class="max-h-16 md:max-h-20 lg:max-h-24 w-auto object-contain transition group-hover:opacity-10">
+            </div>
             <div class="absolute inset-0 bg-[var(--yellow)]/5 opacity-0 group-hover:opacity-100 transition"></div>
             <figcaption class="absolute inset-0 flex items-center justify-center p-3 bg-black/70 text-white opacity-0 group-hover:opacity-100 transition rounded-lg text-sm">Productos líderes de consumo masivo.</figcaption>
           </figure>
 
-          <figure class="group relative card overflow-hidden">
+          <figure class="group relative card overflow-hidden h-44 md:h-48">
             <div class="h-1 w-full bg-[var(--sky)]"></div>
-            <img loading="lazy" src="/update/photos/2.png" alt="CBC" class="mx-auto p-6 transition group-hover:opacity-10">
+            <div class="h-full w-full flex items-center justify-center p-6">
+              <img loading="lazy" src="update/photos/2.png" alt="CBC" class="max-h-16 md:max-h-20 lg:max-h-24 w-auto object-contain transition group-hover:opacity-10">
+            </div>
             <div class="absolute inset-0 bg-[var(--sky)]/5 opacity-0 group-hover:opacity-100 transition"></div>
             <figcaption class="absolute inset-0 flex items-center justify-center p-3 bg-black/70 text-white opacity-0 group-hover:opacity-100 transition rounded-lg text-sm">Portafolio de bebidas icónicas.</figcaption>
           </figure>
 
-          <figure class="group relative card overflow-hidden">
+          <figure class="group relative card overflow-hidden h-44 md:h-48">
             <div class="h-1 w-full bg-[var(--purple)]"></div>
-            <img loading="lazy" src="update/photos/3.png" alt="Rintisa" width="150" class="mx-auto p-6 transition group-hover:opacity-10">
+            <div class="h-full w-full flex items-center justify-center p-6">
+              <img loading="lazy" src="update/photos/3.png" alt="Rintisa" class="max-h-16 md:max-h-20 lg:max-h-24 w-auto object-contain transition group-hover:opacity-10">
+            </div>
             <div class="absolute inset-0 bg-[var(--purple)]/5 opacity-0 group-hover:opacity-100 transition"></div>
             <figcaption class="absolute inset-0 flex items-center justify-center p-3 bg-black/70 text-white opacity-0 group-hover:opacity-100 transition rounded-lg text-sm">Alimentos y cuidado de mascotas.</figcaption>
           </figure>
 
-          <figure class="group relative card overflow-hidden">
+          <figure class="group relative card overflow-hidden h-44 md:h-48">
             <div class="h-1 w-full bg-[var(--yellow)]"></div>
-            <img loading="lazy" src="update/photos/4.png" alt="Rintisa 2" width="150" class="mx-auto p-6 transition group-hover:opacity-10">
+            <div class="h-full w-full flex items-center justify-center p-6">
+              <img loading="lazy" src="update/photos/4.png" alt="Rintisa 2" class="max-h-16 md:max-h-20 lg:max-h-24 w-auto object-contain transition group-hover:opacity-10">
+            </div>
             <div class="absolute inset-0 bg-[var(--yellow)]/5 opacity-0 group-hover:opacity-100 transition"></div>
             <figcaption class="absolute inset-0 flex items-center justify-center p-3 bg-black/70 text-white opacity-0 group-hover:opacity-100 transition rounded-lg text-sm">Alimentos y cuidado de mascotas.</figcaption>
           </figure>
 
-          <figure class="group relative card overflow-hidden">
+          <figure class="group relative card overflow-hidden h-44 md:h-48">
             <div class="h-1 w-full bg-[var(--green)]"></div>
-            <img loading="lazy" src="/update/photos/6.png" alt="Campomar" class="mx-auto p-6 transition group-hover:opacity-10">
+            <div class="h-full w-full flex items-center justify-center p-6">
+              <img loading="lazy" src="update/photos/6.png" alt="Campomar" class="max-h-16 md:max-h-20 lg:max-h-24 w-auto object-contain transition group-hover:opacity-10">
+            </div>
             <div class="absolute inset-0 bg-[var(--green)]/5 opacity-0 group-hover:opacity-100 transition"></div>
             <figcaption class="absolute inset-0 flex items-center justify-center p-3 bg-black/70 text-white opacity-0 group-hover:opacity-100 transition rounded-lg text-sm">Conservas de calidad.</figcaption>
           </figure>
 
-          <figure class="group relative card overflow-hidden col-span-2 sm:col-span-1 md:col-span-1">
+          <!-- Paracas sin width fijo; mismo slot y object-contain -->
+          <figure class="group relative card overflow-hidden h-44 md:h-48">
             <div class="h-1 w-full bg-[var(--red)]"></div>
-            <img loading="lazy" src="update/photos/5.png" width="130" alt="Paracas" class="mx-auto p-6 transition group-hover:opacity-10">
+            <div class="h-full w-full flex items-center justify-center p-6">
+              <img loading="lazy" src="update/photos/5.png" alt="Paracas" class="max-h-16 md:max-h-20 lg:max-h-24 w-auto object-contain transition group-hover:opacity-10">
+            </div>
             <div class="absolute inset-0 bg-[var(--red)]/5 opacity-0 group-hover:opacity-100 transition"></div>
             <figcaption class="absolute inset-0 flex items-center justify-center p-3 bg-black/70 text-white opacity-0 group-hover:opacity-100 transition rounded-lg text-sm">Sal de mesa y derivados.</figcaption>
           </figure>
+
         </div>
       </div>
     </section>
 
     <!-- COBERTURA -->
-    <section id="cobertura" class="py-20 fade-in-section" style="background:var(--sky-pt);">
-      <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <section id="cobertura" class="py-16 md:py-20 fade-in-section" style="background:var(--sky-pt);">
+      <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-12 items-center">
         <div>
-          <h2 class="text-3xl md:text-4xl font-extrabold mb-3 text-[var(--green)]">Cobertura garantizada</h2>
-          <p class="text-lg mb-4 text-[var(--ink)]/80">Llegamos a donde otros no llegan.</p>
+          <h2 class="h2-fluid font-extrabold mb-3 text-[var(--green)]">Cobertura garantizada</h2>
+          <p class="text-base md:text-lg mb-4 text-[var(--ink)]/80">Llegamos a donde otros no llegan.</p>
           <p class="text-[var(--muted)]">Equipos en campo, rutas optimizadas y foco en disponibilidad para asegurar tu punto de venta abastecido en Arequipa y zonas estratégicas del sur.</p>
         </div>
         <div class="relative rounded-xl overflow-hidden shadow-2xl">
           <img loading="lazy" src="https://cmsdelsur.com/wp-content/uploads/2023/08/FOTOS-SEDE-AQP1.png" alt="Mapa de cobertura CMS del Sur" class="w-full h-auto">
-          <!-- Overlay celeste sutil -->
           <div class="absolute inset-0 bg-[var(--sky)]/10"></div>
         </div>
       </div>
     </section>
 
     <!-- CULTURA / CARRUSEL -->
-    <section id="cultura" aria-labelledby="cultura-title" class="py-20 fade-in-section" style="background:var(--green-pt);">
+    <section id="cultura" aria-labelledby="cultura-title" class="py-16 md:py-20 fade-in-section" style="background:var(--green-pt);">
       <div class="max-w-6xl mx-auto px-6 text-center">
-        <h2 id="cultura-title" class="text-3xl md:text-4xl font-extrabold mb-4 text-[var(--purple)]">Somos más que un distribuidor</h2>
-        <p class="max-w-3xl mx-auto text-[var(--ink)]/75 mb-10">Con orgullo, acompañamos el crecimiento de miles de negocios locales.</p>
+        <h2 id="cultura-title" class="h2-fluid font-extrabold mb-4 text-[var(--purple)]">Somos más que un distribuidor</h2>
+        <p class="max-w-3xl mx-auto text-[var(--ink)]/75 mb-8 md:mb-10">Con orgullo, acompañamos el crecimiento de miles de negocios locales.</p>
 
         <div id="carousel" class="relative max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl group" aria-roledescription="carrusel" tabindex="0">
           <div id="carousel-inner" class="flex transition-transform duration-500 ease-in-out" style="touch-action: pan-y;">
@@ -301,7 +320,7 @@
     <section id="contacto" class="text-white">
       <div class="brand-gradient">
         <div class="max-w-7xl mx-auto px-6 py-16 text-center">
-          <h2 class="text-3xl md:text-4xl font-extrabold mb-6">¿Quieres conocer más de CMS del Sur?</h2>
+          <h2 class="h2-fluid font-extrabold mb-6">¿Quieres conocer más de CMS del Sur?</h2>
           <div class="mb-6 flex flex-wrap gap-2 justify-center text-[13px]">
             <span class="px-3 py-1 rounded-full bg-white/15">+8k clientes</span>
             <span class="px-3 py-1 rounded-full bg-white/15">Tiempo de entrega 24–48h</span>
@@ -326,7 +345,6 @@
 
   <!-- FOOTER -->
   <footer class="text-white">
-    <!-- franja superior multicolor para cierre de marca -->
     <div class="grid grid-cols-5 h-1">
       <div class="bg-[var(--yellow)]"></div>
       <div class="bg-[var(--sky)]"></div>
